@@ -87,7 +87,6 @@ function App() {
               <img src={item[1].image} className="dogs__img"/>
               <figcaption className='dogs__figcaption'>{item[1].name}</figcaption>
             </figure>
-          {item[1].video}
           </li>)}
         </ul> 
       </div>  
