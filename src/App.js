@@ -30,7 +30,9 @@ function App() {
       .then(json=>{
         (Object.entries(json.message)).map(e=>{
           concatDogs(e).then(res=>{
+            console.log(res)
             setList(list => [...list, res])
+            console.log(list)
           })
         })
       })
