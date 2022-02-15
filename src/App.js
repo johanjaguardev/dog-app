@@ -1,5 +1,5 @@
 import './App.css'
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const getImages = async(breed) => {
   const images = await fetch(`https://dog.ceo/api/breed/${breed}/images/random`)
@@ -30,7 +30,7 @@ const concatDogs = async (dog) => {
 function App() {
   const [list, setList] = useState([])
 
-  useEffect(async() => {
+  useEffect(() => {
     (async () => {
       const flatDogsArray = []
       const all = await fetch(`https://dog.ceo/api/breeds/list/all`)
@@ -39,20 +39,20 @@ function App() {
       const allWithChildrens = await Promise.all(
         Object.entries(allMessage).map(async (dog)=>concatDogs(dog))
       )
-      const flatDogs = await Promise.all(
+      await Promise.all(
         allWithChildrens.map(async (dog)=>{
           if( dog.hasOwnProperty('name') ) {
             flatDogsArray.push(dog)
           } else {
             Object.entries(dog).map(child=>{
               flatDogsArray.push(child[1])
+              return false
             })
           }
           return flatDogsArray
         })
       )
       setList(flatDogsArray)
-      //console.log(all, allJson, allMessage, allWithChildrens, list)
     })();
   }, [])
   return (
