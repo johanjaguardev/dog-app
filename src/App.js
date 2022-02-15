@@ -35,6 +35,7 @@ function App() {
           return concatDogs(e)
         })
       )
+      setList(allWithChildrens)
       console.log(all, allJson, allMessage, allWithChildrens)
     })();
   }, [])
@@ -42,7 +43,7 @@ function App() {
     <div className="wrapper">
      <h1>My Grocery List</h1>
      <ul>
-      {dogsArray.map(item => <li key={item}>{item}</li>)}
+      {Object.entries(list).map(item => <li key={item[0]}>{item[1].name}</li>)}
      </ul>
    </div>
   )
