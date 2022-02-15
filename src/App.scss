@@ -1,0 +1,8 @@
+$green: #659caf;
+$white: #ffffff;
+$black: #000000;
+
+.top {
+  background: rgba($green,1);
+  background: linear-gradient(90deg, rgba($green,1) 0%, rgba($white,1) 100%);
+}
