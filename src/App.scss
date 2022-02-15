@@ -4,6 +4,9 @@ $green: #659caf;
 $white: #ffffff;
 $black: #000000;
 
+
+$tablet-size: 768px;
+
 body {
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
@@ -55,10 +58,20 @@ h1 {
 }
 
 .hero {
+  display: flex;
+  flex-direction: column;
   padding: 0 3em 3em 3em;
+
+  @media (min-width: $tablet-size) {
+    flex-direction: row;
+  }
 
   h2 {
     text-align: center;
+
+    @media (min-width: $tablet-size) {
+      text-align: left;
+    }
   }
 
   p {
@@ -67,15 +80,27 @@ h1 {
   }
 
   &__video-box {
+    @media (min-width: $tablet-size) {
+      width: 40%;
+    }
+
     height: 300px;
   }
+  @media (min-width: $tablet-size) {
+    &__info {
+      width: 60%;
+      padding-right: 2em;
+    }
+  }
 }
+
 .wrapper {
   display: flex;
   flex-direction: column;
   overflow: hidden;
   max-width: 100%;
 }
+
 .dogs {
   h3 {
     font-size: 2em;
@@ -100,21 +125,33 @@ h1 {
     margin: 0;
     padding: 0 5em;
     width: 100%;
+
+    @media (min-width: $tablet-size) {
+      flex-direction: row;
+    }
   }
 
   &__item {
     display: flex;
     justify-content: center;
     max-width: 100%;
+
+    @media (min-width: $tablet-size) {
+      width: 300px;
+    }
   }
 
   &__figure {
     border: 1px solid #ccc;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     justify-content: center;
-    padding: 0.4em 0;
+    padding: 0;
     width: 100%;
+    @media (min-width: $tablet-size) {
+      justify-content: space-evenly;
+    }
   }
 
   &__figcaption {
@@ -125,6 +162,7 @@ h1 {
   }
 
   &__img {
+    height: fit-content;
     max-width: 100%;
   }
 }
