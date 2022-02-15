@@ -58,10 +58,20 @@ h1 {
 }
 
 .hero {
+  display: flex;
+  flex-direction: column;
   padding: 0 3em 3em 3em;
+
+  @media (min-width: $tablet-size) {
+    flex-direction: row;
+  }
 
   h2 {
     text-align: center;
+
+    @media (min-width: $tablet-size) {
+      text-align: left;
+    }
   }
 
   p {
@@ -70,7 +80,17 @@ h1 {
   }
 
   &__video-box {
+    @media (min-width: $tablet-size) {
+      width: 40%;
+    }
+
     height: 300px;
+  }
+  @media (min-width: $tablet-size) {
+    &__info {
+      width: 60%;
+      padding-right: 2em;
+    }
   }
 }
 
