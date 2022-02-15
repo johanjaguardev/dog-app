@@ -23,25 +23,26 @@ const concatDogs = async (e) => {
 
 function App() {
   const [list, setList] = useState([])
+  const dogsArray = []
 
-  useEffect(() => {
-    fetch(`https://dog.ceo/api/breeds/list/all`)
-      .then(response=>response.json())
-      .then(json=>{
-        (Object.entries(json.message)).map(e=>{
-          concatDogs(e).then(res=>{
-            console.log(res)
-            setList(list => [...list, res])
-            console.log(list)
-          })
+  useEffect(async() => {
+    (async () => {
+      const all = await fetch(`https://dog.ceo/api/breeds/list/all`)
+      const allJson = await all.json()
+      const allMessage = await allJson.message
+      const allWithChildrens = await Promise.all(
+        Object.entries(allMessage).map(async (e)=>{
+          return concatDogs(e)
         })
-      })
+      )
+      console.log(all, allJson, allMessage, allWithChildrens)
+    })();
   }, [])
   return (
     <div className="wrapper">
      <h1>My Grocery List</h1>
      <ul>
-      {Object.entries(list).map(item => <li key={item}>{item}</li>)}
+      {dogsArray.map(item => <li key={item}>{item}</li>)}
      </ul>
    </div>
   )
