@@ -24,11 +24,21 @@ h1 {
   margin: 0;
   padding: 1em 0 0 0;
   text-align: center;
+
+  @media (min-width: $tablet-size) {
+    padding: 1em 1.5em;
+  }
 }
 
 .header {
   display: flex;
   flex-direction: column;
+  
+  @media (min-width: $tablet-size) {
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 
   &__menu {
     display: flex;
@@ -39,6 +49,10 @@ h1 {
     padding: 0;
     text-decoration: none;
     width: 100%;
+
+    @media (min-width: $tablet-size) {
+      padding-right: 6em;
+    }
 
 
     &-a {
