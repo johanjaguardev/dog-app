@@ -7,10 +7,13 @@ const getImages = async(breed) => {
   const imagesMessage = await imagesJson.message
   const imagesObject = await {
     name: breed.replace('/', ' '),
-    image: imagesMessage
+    image: imagesMessage,
+    video: 'https://www.youtube.com/watch?v=VqUeo5SRMx4',
+    link: 'https://zipdev.com/'
   }
   return imagesObject
 }
+
 const concatDogs = async (dog) => {
   const breed = dog[0]
   const childs = dog[1]
@@ -49,7 +52,7 @@ function App() {
               return false
             })
           }
-          return flatDogsArray
+          return false
         })
       )
       setList(flatDogsArray)
@@ -57,10 +60,18 @@ function App() {
   }, [])
   return (
     <div className="wrapper">
-     <h1>My Grocery List</h1>
-     <ul>
-      {Object.entries(list).map(item => <li key={item[0]}>{item[1].name}</li>)}
-     </ul>
+      <h1>My Grocery List</h1>
+      <div className="dog__container container">
+        <ul className="dog__grid">
+          {Object.entries(list).map(item =>
+          <li key={item[0]} className="dog__item">
+            <h2>{item[1].name}</h2>
+            <img src={item[1].image}/>
+          {item[1].video}
+          </li>)}
+        </ul> 
+      </div>  
+
    </div>
   )
 }
