@@ -1,3 +1,4 @@
+import './../styles/grid.scss'
 import React from "react"
 const Grid = ({list}) => {
   return (
