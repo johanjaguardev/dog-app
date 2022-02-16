@@ -1,6 +1,7 @@
 import './App.scss'
 import { Header } from './components/Header'
 import { Hero } from './components/Hero'
+import { Grid } from './components/Grid'
 import React, { useEffect, useState } from 'react'
 
 const getImages = async(breed) => {
@@ -59,7 +60,7 @@ function App() {
     })();
   }, [])
   return (
-    <div className="wrapper">
+    <React.Fragment>
       <div className="top">
         <Header/>
         <Hero />
@@ -67,18 +68,9 @@ function App() {
 
       <div className="dogs dogs__container container">
         <h3>Dog Breeds</h3>
-        <ul className="dogs__grid">
-          {Object.entries(list).map(item =>
-          <li key={item[0]} className="dogs__item">
-            <figure className='dogs__figure'>
-              <img src={item[1].image} className="dogs__img"/>
-              <figcaption className='dogs__figcaption'>{item[1].name}</figcaption>
-            </figure>
-          </li>)}
-        </ul> 
+        <Grid list={Object.entries(list)}></Grid>
       </div>  
-
-   </div>
+    </React.Fragment>
   )
 }
 
